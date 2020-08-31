@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
 #
 # Example 1:
@@ -20,28 +17,27 @@
 #
 
 
-class Solution(object):
-    def longestPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
-        longest, mid = "", (len(s) - 1) / 2
-        i, j = mid, mid
-        while i >= 0 and j < len(s):
-            args = [(s, i, i), (s, i, i + 1), (s, j, j), (s, j, j + 1)]
-            for arg in args:
-                tmp = self.longestPalindromeByAxis(*arg)
-                if len(tmp) > len(longest):
-                    longest = tmp
-            if len(longest) >= i * 2:
-                if len(longest) == 1:
-                    return s[0]
-                return longest
-            i, j = i - 1, j + 1
-        return longest
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        assert('$' not in s and '^' not in s and '#' not in s)
+        if s == '':
+            return ''
+        t = '^#' + "#".join(s) + "#$"
+        c = 0
+        d = 0
+        #les rayons du palindrom cnetre en j
+        P = [0 for _ in range(len(t))]
+        for  i in range(1, len(t) - 1):
+            mirroir = 2 * c - i
+            P[i] = max(0, min(d - i, P[mirroir]))
+            
+            while t[i + 1 + P[i]] == t[i - 1 - P[i]]:
+                P[i] += 1
 
-    def longestPalindromeByAxis(self, s, left, right):
-        while left >= 0 and right < len(s) and s[left] == s[right]:
-            left, right = left - 1, right + 1
-        return s[left + 1: right]
+            if i + P[i] > d:
+                c = i
+                d = i + P[i]
+        (k, i) = max((P[i], i) for i in range(1, len(t) - 1))
+        (start, end) = ((i - k) // 2, (i + k) // 2)
+        return s[start:end]
+                    

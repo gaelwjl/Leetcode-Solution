@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
 #
 # k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.
@@ -26,48 +23,35 @@
 
 
 # Definition for singly-linked list.
-# class ListNode(object):
+# class ListNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
 
-class Solution(object):
-    def reverseKGroup(self, head, k):
-        """
-        :type head: ListNode
-        :type k: int
-        :rtype: ListNode
-        """
-        if not head:
+class Solution:
+    def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
+        it = head
+        l = 0
+        while it:
+            it = it.next
+            l += 1
+            if l >= k:
+                break
+        if l < k:
             return head
-
-        h = head
-        stack = []
-        result = dummy = ListNode(-1)
-        i = 0
-        while h:
-            
-            stack.append(h.val)
-
-            if len(stack) == k:
-                tmp_head, tmp_tail = self.putStacktoLinkList(stack)
-                stack = []
-                dummy.next = tmp_head
-                dummy = tmp_tail
-            h = h.next
-
-        if stack:
-            for _,v in enumerate(stack):
-                l = ListNode(v)
-                dummy.next = l
-                dummy = dummy.next
-        return result.next
-
-    def putStacktoLinkList(self, stack):
-        head = cur = ListNode(stack.pop())
-        while stack:
-            l = ListNode(stack.pop())
-            cur.next = l
-            cur = cur.next
-        return head, cur
+        cur = head
+        it = cur.next
+        prev = None
+        cnt = 1
+        while cnt < k:
+            cur.next = prev
+            prev = cur
+            cur = it
+            if not it:
+                return head
+            it = it.next
+            cnt += 1
+        cur.next = prev
+        head.next = self.reverseKGroup(it, k)
+        return cur
             

@@ -1,7 +1,4 @@
-# -*- coding:utf-8 -*-
-
-
-# Say you have an array for which the ith element is the price of a given stock on day i.
+# Say you have an array prices for which the ith element is the price of a given stock on day i.
 #
 # Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
 #
@@ -33,25 +30,19 @@
 # Output: 0
 # Explanation: In this case, no transaction is done, i.e. max profit = 0.
 #
+#  
+# Constraints:
+#
+#
+# 	1 <= prices.length <= 3 * 10 ^ 4
+# 	0 <= prices[i] <= 10 ^ 4
+#
+#
 
 
-class Solution(object):
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
-        profit = 0
-        tmp_profit = 0
-        if not prices:
-            return profit
-        cur = prices[0]
-        for item in prices[1:]:
-            if item >= cur:
-                tmp_profit = tmp_profit+item-cur
-            else:
-                profit += tmp_profit
-                tmp_profit = 0
-            cur = item
-        profit += tmp_profit
-        return profit
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        res = 0
+        for i in range(1, len(prices)):
+            res += max(prices[i] - prices[i-1], 0)
+        return res

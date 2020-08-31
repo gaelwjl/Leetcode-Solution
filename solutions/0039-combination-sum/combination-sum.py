@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
 #
 # The same repeated number may be chosen from candidates unlimited number of times.
@@ -35,25 +32,35 @@
 # ]
 #
 #
+#  
+# Constraints:
+#
+#
+# 	1 <= candidates.length <= 30
+# 	1 <= candidates[i] <= 200
+# 	Each element of candidate is unique.
+# 	1 <= target <= 500
+#
+#
 
 
-class Solution(object):
-    def combinationSum(self, candidates, target):
-        """
-        :type candidates: List[int]
-        :type target: int
-        :rtype: List[List[int]]
-        """
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
-        candidates.sort()
-        self.dfs(candidates, target, 0, [], res)
+        temp = []
+        self.solve(sorted(candidates), target, temp, res)
         return res
     
-    def dfs(self, nums, target, index, path, res):
-        if target < 0:
-            return  # backtracking
+    def solve(self, candidates, target, temp, res):
         if target == 0:
-            res.append(path)
-            return 
-        for i in xrange(index, len(nums)):
-            self.dfs(nums, target-nums[i], i, path+[nums[i]], res)
+            res.append(temp[:])
+            return
+        if (len(candidates) == 0 and target != 0) or target < candidates[0]:
+            return
+        else:
+            for i, v in enumerate(candidates):
+                temp.append(v)
+                self.solve(candidates[i:], target - v, temp, res)
+                temp.pop(-1)
+            return res
+        

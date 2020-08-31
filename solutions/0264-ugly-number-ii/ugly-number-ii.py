@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Write a program to find the n-th ugly number.
 #
 # Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. 
@@ -20,23 +17,28 @@
 #
 
 
-class Solution(object):
-    def nthUglyNumber(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-        ugly = [1]
-        i2, i3, i5 = 0, 0, 0
-        while n > 1:
-            u2, u3, u5 = 2 * ugly[i2], 3 * ugly[i3], 5 * ugly[i5]
-            umin = min(u2, u3, u5)
-            if umin == u2:
-                i2 += 1
-            if umin == u3:
-                i3 += 1
-            if umin == u5:
-                i5 += 1
-            ugly.append(umin)
+class Solution:
+    def nthUglyNumber(self, n: int) -> int:
+        if n == 1:
+            return n
+        us = [[1] for _ in range(3)]
+        ps = [2, 3, 5]
+        def generate():
+            min_ = float('inf')
+            ind_ = 0
+            for i, p in enumerate(ps):
+                if min_ > p * us[i][0]:
+                    min_ = p * us[i][0]
+                    ind_ = i
+            for i, p in enumerate(ps):
+                if p*us[i][0] == min_:
+                    us[i].pop(0)
+            for i in range(3):
+                us[i].append(min_)
+            return min_
+        n -= 1
+        while n:
+            res = generate()
             n -= 1
-        return ugly[-1]
+        return res
+

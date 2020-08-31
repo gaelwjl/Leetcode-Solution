@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a string, find the length of the longest substring without repeating characters.
 #
 #
@@ -36,22 +33,16 @@
 #
 
 
-class Solution(object):
-    def lengthOfLongestSubstring(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-
-        longest, start, visited = 0, 0, [False for _ in range(256)]
-        for ind, val in enumerate(s):
-            if not visited[ord(val)]:
-                visited[ord(val)] = True
-            else:
-                while val != s[start]:
-                    visited[ord(s[start])] = False
-                    start += 1
-                start += 1
-            longest = max(longest, ind - start + 1)
-        return longest
-        
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        mymap = {}
+        i = 0
+        n = len(s)
+        max_ = 0
+        for j in range(n):
+            if s[j] in mymap:
+                i = max(i, mymap[s[j]])
+            max_ = max(max_, j - i + 1)
+            mymap[s[j]] = j + 1
+        return max_
+            

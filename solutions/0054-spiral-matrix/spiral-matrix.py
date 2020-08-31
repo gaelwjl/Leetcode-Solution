@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
 #
 # Example 1:
@@ -27,22 +24,31 @@
 #
 
 
-class Solution(object):
-    def spiralOrder(self, matrix):
-        """
-        :type matrix: List[List[int]]
-        :rtype: List[int]
-        """
-        if not matrix:
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        dy = [1,  0,  -1, 0]
+        dx = [0,  1,  0, -1]
+        if matrix == [[]] or matrix == []:
             return []
-            
-        result = []
-        while len(matrix)>0:
-            t = matrix.pop(0)
-            matrix = self.trans(matrix)
-            result += t
-        return result
-        
-
-    def trans(self, matrix):
-        return list(zip(*matrix))[::-1]
+        n = len(matrix)
+        m = len(matrix[0])
+        seen = [[False for _ in range(m)] for _ in range(n)]
+        i = 0
+        res = []
+        i0 = 0
+        x = 0
+        y = 0
+        while i < n * m:
+            #print(x, y, i)
+            if seen[x][y] == False:
+                res.append(matrix[x][y])
+                seen[x][y] = True
+                i += 1
+            #compute next x and y
+            tempx = x + dx[i0]
+            tempy = y + dy[i0]
+            if tempx < 0 or tempy < 0 or tempx == n or tempy == m or seen[tempx][tempy] == True:
+                i0 = ((1 + i0) % 4)
+            x += dx[i0]
+            y  += dy[i0]
+        return res

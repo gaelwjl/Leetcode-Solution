@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a non-empty array of integers, every element appears three times except for one, which appears exactly once. Find that single one.
 #
 # Note:
@@ -22,15 +19,11 @@
 #
 
 
-class Solution(object):
-    def singleNumber(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        if len(nums) == 1:
-            return nums[0]
-        s = sum(set(nums))*3
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        ones = 0
+        twos = 0
         for n in nums:
-            s = s - n
-        return s/2
+            ones = (~twos) & (ones ^ n)
+            twos = (~ones) & (twos ^ n)
+        return ones

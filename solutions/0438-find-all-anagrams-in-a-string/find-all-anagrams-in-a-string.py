@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
 #
 # Strings consists of lowercase English letters only and the length of both strings s and p will not be larger than 20,100.
@@ -37,45 +34,20 @@
 #
 
 
-class Solution(object):
-    def findAnagrams(self, s, p):
-        """
-        :type s: str
-        :type p: str
-        :rtype: List[int]
-        """
-        len_p = len(p)
-        len_s = len(s)
-        result = []
-        
-        if len_s < len_p:
-            return result
-        
-        dct1 = self.stringtodict(s[:len_p])
-        dct2 = self.stringtodict(p)
-        if dct1 == dct2:
-            result.append(0)
-        
-        for i in xrange(1,len_s-len_p+1):
-            letter_remove = s[i-1]
-            letter_add = s[len_p+i-1]
-            dct1[letter_remove] -= 1
-            if dct1[letter_remove] == 0:
-                del dct1[letter_remove]
-            if letter_add in dct1:
-                dct1[letter_add] += 1
-            else:
-                dct1[letter_add] = 1
-            if dct1 == dct2:
-                result.append(i)
-        return result
-    
-    def stringtodict(self, s):
-        dct = {}
-        
-        for letter in s:
-            if letter in dct:
-                dct[letter] += 1
-            else:
-                dct[letter] = 1
-        return dct
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        p_list, cur = [0]*26, [0]*26
+        ans = []
+        if len(p) > len(s):
+            return []
+        for i in range(len(p)):
+            p_list[ord(p[i]) - ord('a')] += 1
+            cur[ord(s[i]) - ord('a')] += 1
+        for i in range(len(p), len(s)):
+            if cur == p_list:
+                ans.append(i - len(p))
+            cur[ord(s[i - len(p) ]) - ord('a') ] -= 1
+            cur[ord(s[i]) - ord('a')] += 1
+        if cur == p_list:
+                ans.append(len(s) - len(p))
+        return ans

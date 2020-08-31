@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a 32-bit signed integer, reverse digits of an integer.
 #
 # Example 1:
@@ -29,18 +26,22 @@
 #
 
 
-class Solution(object):
-    def reverse(self, x):
-        """
-        :type x: int
-        :rtype: int
-        """
-        l = list(str(abs(x)))
-        l.reverse()
-        rst = int(''.join(l))
-        if rst > 2147483647:
+class Solution:
+    def reverse(self, x: int) -> int:
+        s = str(x)
+        if x == 0:
             return 0
+        if s[0] != '-':
+            res = ""
+            ind = len(s) - 1
+            while s[ind] == '0':
+                ind -= 1
+            while ind >= 0:
+                res += s[ind]
+                ind -= 1
+            return int(res) if int(res) <= 2**31 - 1 else 0
         else:
-            return rst if x>=0 else rst * (-1)
-
-            
+            res = ""
+            for i in range(len(s) - 1, 0,  -1):
+                res += s[i]
+            return - int(res) if - int(res) >= -2**31 else 0

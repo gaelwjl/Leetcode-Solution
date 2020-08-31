@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Reverse a singly linked list.
 #
 # Example:
@@ -17,25 +14,21 @@
 
 
 # Definition for singly-linked list.
-# class ListNode(object):
+# class ListNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
 
-class Solution(object):
-    def reverseList(self, head):
-        """
-        :type head: ListNode
-        :rtype: ListNode
-        """
-        h = head
-        lst = []
-        result = tail = ListNode(None)
-        while h:
-            lst.append(h.val)
-            h=h.next
-        while lst:
-            node = ListNode(lst.pop())
-            tail.next = node
-            tail = tail.next
-        return result.next
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        i = head
+        if not head:
+            return head
+        j = head.next
+        while j != None:
+            next_p = j.next
+            j.next = i
+            i = j
+            j = next_p
+        head.next = None
+        return i

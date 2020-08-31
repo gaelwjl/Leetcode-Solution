@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
 #
 #
@@ -22,21 +19,19 @@
 #
 
 
-class Solution(object):
-    def generate(self, numRows):
-        """
-        :type numRows: int
-        :rtype: List[List[int]]
-        """
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
         if numRows == 0:
             return []
-        
-        if numRows == 1:
+        elif numRows == 1:
             return [[1]]
-        
-        tmp = self.generate(numRows-1)            
-        # x = [0] + tmp[-1]
-        # y = tmp[-1] + [0]
-        # a = [x[i]+y[i] for i,_ in enumerate(x)]
-        a = list(map(lambda x, y: x+y, tmp[-1] + [0], [0] + tmp[-1]))
-        return tmp + [a]
+        else:
+            res = [[1]]
+            for i in range(1, numRows):
+                last = res[-1].copy()
+                last.append(1)
+                for j in range(1, len(last) - 1):
+                    last[j] = res[-1][j - 1] + res[-1][j]
+                res.append(last)
+            return res
+            

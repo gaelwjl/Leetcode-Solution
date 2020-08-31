@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Implement a basic calculator to evaluate a simple expression string.
 #
 # The expression string contains only non-negative integers, +, -, *, / operators and empty spaces  . The integer division should truncate toward zero.
@@ -34,31 +31,43 @@
 #
 
 
-class Solution(object):
-    def calculate(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        if not s:
-            return 0
-        stack, num ,sign= [], 0, '+'
-        for i in xrange(len(s)):
-            if s[i].isdigit():
-                num = num*10+ord(s[i])-ord('0')
-            if (not s[i].isdigit() and not s[i].isspace()) or i == len(s)-1:
-                if sign == '-':
-                    stack.append(-num)
-                elif sign == '+':
-                    stack.append(num)
-                elif sign == '*':
-                    stack.append(stack.pop()*num)
-                else:
-                    tmp = stack.pop()
-                    if tmp < 0 and abs(tmp)%num != 0:
-                        stack.append(tmp/num+1)
-                    else:
-                        stack.append(tmp/num)
-                sign = s[i]
-                num = 0
-        return sum(stack)
+class Solution:
+    def calculate(self, s: str) -> int:
+        stack = []
+        sgn, op = 1, 0
+        i = 0
+        while i < len(s):
+            if s[i] == " ":
+                i += 1
+                continue
+            elif s[i].isdigit():
+                j = i + 1
+                n = s[i]
+                while j < len(s) and s[j].isdigit():
+                    n += s[j]
+                    j += 1
+                i = j
+                n = int(n)
+                if op == 0: 
+                    stack.append(sgn*n)
+                elif op == 1:
+                    n1 = stack.pop()
+                    stack.append(n1 * n)
+                elif op == -1:
+                    n1 = stack.pop()
+                    stack.append(int(n1 / n))
+            elif s[i] == '*':
+                op = 1
+                i += 1
+            elif s[i] == '/':
+                op = -1
+                i += 1
+            elif s[i] == '+':
+                op = 0
+                sgn = 1 
+                i += 1
+            elif s[i] == '-':
+                op = 0
+                sgn = -1
+                i += 1
+        return int(sum(stack))

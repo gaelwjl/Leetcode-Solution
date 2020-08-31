@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 #
 #
@@ -60,15 +57,14 @@
 #
 
 
-class Solution(object):
-    def romanToInt(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        roman = {"I":1, "V":5, "X":10, "L":50, "C":100, "D":500, "M":1000}
-        total = 0
-        for index in range(len(s)-1):
-            type = 1 if roman[s[index]]>=roman[s[index+1]] else -1
-            total += type*roman[s[index]]
-        return total + roman[s[len(s)-1]]
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        dict_ = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
+        res = dict_[s[-1]]
+        n = len(s)
+        for i in range(n-1):
+            if dict_[s[i]] < dict_[s[i+1]]:
+                res -= dict_[s[i]]
+            else:
+                res += dict_[s[i]]
+        return res 

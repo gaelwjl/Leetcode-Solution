@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 #
 # Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
 #
@@ -19,25 +16,20 @@
 #
 
 
-class Solution(object):
-    def generateParenthesis(self, n):
-        """
-        :type n: int
-        :rtype: List[str]
-        """
-        lst = []
-        def generate(cur, left, right):
-            
-            if left > right:
-                return
-            if left == 0 and right == 0:
-                lst.append(cur)
-                return
-            if left > 0:
-                generate(cur + '(', left - 1, right)
-            if right > 0:
-                generate(cur + ')', left, right - 1)
-        generate('', n, n)
-        return lst
-    
-
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        memo = {}
+        if n == 0:
+            return [""]
+        if n == 1:
+            memo[1] = ["()"]
+            return ["()"]
+        if n in memo:
+            return memo[n]
+        res = []
+        for k in range(n):
+            for left in self.generateParenthesis(k):
+                for right in self.generateParenthesis(n - 1 - k):
+                    res.append("("+left+")"+ right)
+        memo[n] = res
+        return res

@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a non-empty array of integers, every element appears twice except for one. Find that single one.
 #
 # Note:
@@ -23,10 +20,9 @@
 #
 
 
-class Solution(object):
-    def singleNumber(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        return reduce(lambda x, y: x ^ y, nums)
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        a = 0
+        for i in nums:
+            a ^= i
+        return a

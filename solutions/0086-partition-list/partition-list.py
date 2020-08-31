@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
 #
 # You should preserve the original relative order of the nodes in each of the two partitions.
@@ -15,31 +12,27 @@
 
 
 # Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
-class Solution(object):
-    def partition(self, head, x):
-        """
-        :type head: ListNode
-        :type x: int
-        :rtype: ListNode
-        """
-        h1 = t1 = ListNode(-1)
-        h2 = t2 = ListNode(-1)
-        dummy = head
-        while dummy:
-            if dummy.val < x:
-                t1.next = dummy
-                t1 = t1.next
-            else:
-                t2.next = dummy
-                t2 = t2.next
-            dummy = dummy.next
-        t2.next = None
-        t1.next = h2.next
-        return h1.next
-                
-        
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def partition(self, head: ListNode, x: int) -> ListNode:
+        smaller = ListNode(0)
+        bigger = ListNode(0)
+        itsmall = smaller
+        itbigger = bigger
+        it = head
+        while (it != None):
+            while it and it.val < x:
+                itsmall.next = it
+                itsmall = itsmall.next
+                it = it.next
+            itsmall.next = None
+            while it and it.val >= x:
+                itbigger.next = it
+                itbigger = itbigger.next
+                it = it.next
+            itbigger.next = None
+        itsmall.next = bigger.next
+        return smaller.next

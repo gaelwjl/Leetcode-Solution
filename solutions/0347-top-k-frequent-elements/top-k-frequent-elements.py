@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a non-empty array of integers, return the k most frequent elements.
 #
 # Example 1:
@@ -23,25 +20,13 @@
 #
 # 	You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
 # 	Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
+# 	It's guaranteed that the answer is unique, in other words the set of the top k frequent elements is unique.
+# 	You can return the answer in any order.
 #
 #
 
 
-class Solution(object):
-    def topKFrequent(self, nums, k):
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: List[int]
-        """
-        d = dict()
-        for item in nums:
-            if item in d:
-                d[item] += 1
-            else:
-                d[item] = 1
-        arr1 = sorted(d.iteritems(), key=lambda asd:asd[1], reverse=True)
-        arr2 = []
-        for key in range(len(arr1)):
-            arr2.append(arr1[key][0])
-        return arr2[0:k]
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        c = Counter(nums)
+        return [x[0] for x in sorted(c.items(), key = lambda x: -x[1])[:k]]

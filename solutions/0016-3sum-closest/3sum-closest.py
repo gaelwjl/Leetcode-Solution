@@ -1,39 +1,44 @@
-# -*- coding:utf-8 -*-
-
-
 # Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
 #
-# Example:
+#  
+# Example 1:
 #
 #
-# Given array nums = [-1, 2, 1, -4], and target = 1.
+# Input: nums = [-1,2,1,-4], target = 1
+# Output: 2
+# Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 #
-# The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+#
+#  
+# Constraints:
+#
+#
+# 	3 <= nums.length <= 10^3
+# 	-10^3 <= nums[i] <= 10^3
+# 	-10^4 <= target <= 10^4
 #
 #
 
 
-class Solution(object):
-    def threeSumClosest(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: int
-        """
-        nums.sort()
-        result = sum(nums[:3])
-        for i in range(len(nums) - 2):
-            j, k = i+1, len(nums) - 1
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        nums = sorted(nums)
+        n = len(nums)
+        nums = sorted(nums)
+        res = 1e5
+        for i in range(n - 2):
+            if i>=1 and nums[i] == nums[i-1]:
+                continue
+            j = i + 1
+            k = n - 1
             while j < k:
-                s = nums[i] + nums[j] + nums[k]
-                if s == target:
-                    return s
-
-                if abs(s - target) < abs(result - target):
-                    result = s
-
-                if s < target:
-                    j += 1
-                elif s > target:
+                tmp = nums[j] + nums[k] + nums[i]
+                if abs(tmp - target) < abs(res - target):
+                    res = tmp
+                if tmp - target > 0:
                     k -= 1
-        return result
+                elif tmp - target < 0:
+                    j += 1
+                else:
+                    return res
+        return res

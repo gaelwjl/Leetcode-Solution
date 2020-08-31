@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given an unsorted integer array, find the smallest missing positive integer.
 #
 # Example 1:
@@ -24,23 +21,27 @@
 # Output: 1
 #
 #
-# Note:
+# Follow up:
 #
 # Your algorithm should run in O(n) time and uses constant extra space.
 #
 
 
-class Solution(object):
-    def firstMissingPositive(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        length = len(nums)
-        if len(nums) == 0:
-            return 1
-        lst = range(1, length+2)
-        for i in nums:
-            if i > 0 and i < length+1 and i in lst:
-                lst.remove(i)
-        return lst[0]
+class Solution:
+    def firstMissingPositive(self, nums: List[int]) -> int:
+        n = len(nums)
+        for i in range(n):
+            if nums[i] < 0 or nums[i] > n:
+                nums[i] = 0
+        nums = [0] + nums
+        for i in range(1, n + 1):
+            j = nums[i]
+            while i != j:
+                tmp = nums[j]
+                nums[j] = j
+                i = j
+                j = tmp
+        for i in range(1, n + 1):
+            if nums[i] != i:
+                return i
+        return n + 1

@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a binary tree, return the inorder traversal of its nodes' values.
 #
 # Example:
@@ -20,22 +17,20 @@
 
 
 # Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-class Solution(object):
-    def inorderTraversal(self, root):
-        res = []
-        self.helper(root, res)
-        return res
-        
-    def helper(self, root, res):
-        if root:
-            self.helper(root.left, res)
-            res.append(root.val)
-            self.helper(root.right, res)
-        
-        
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        stack, ans = [], []
+        cur = root
+        while cur or stack:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
+            tmp = stack.pop(-1)
+            ans.append(tmp.val)
+            cur = tmp.right
+        return ans

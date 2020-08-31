@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a set of distinct integers, nums, return all possible subsets (the power set).
 #
 # Note: The solution set must not contain duplicate subsets.
@@ -23,16 +20,14 @@
 #
 
 
-class Solution(object):
-    def subsets(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-        if not nums:
-            return [[]]
-        else:
-            last = nums[-1]
-            tmp = self.subsets(nums[:-1])
-            tmp2 = [i + [last] for i in tmp]
-            return tmp+tmp2
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        toreturn = [[]]
+        for i in range(len(nums)):
+            a_ = []
+            for j in range(len(toreturn)):
+                a = toreturn[j]
+                a_ = a[:]
+                a_.append(nums[i])
+                toreturn.append(a_)
+        return toreturn

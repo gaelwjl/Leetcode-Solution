@@ -1,6 +1,3 @@
-# -*- coding:utf-8 -*-
-
-
 # Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary).
 #
 # You may assume that the intervals were initially sorted according to their start times.
@@ -23,41 +20,24 @@
 #
 
 
-# Definition for an interval.
-# class Interval(object):
-#     def __init__(self, s=0, e=0):
-#         self.start = s
-#         self.end = e
-
-class Solution(object):
-    def insert(self, intervals, newInterval):
-        """
-        :type intervals: List[Interval]
-        :type newInterval: Interval
-        :rtype: List[Interval]
-        """
-        if not intervals:
-            return [newInterval]
-            
-        if newInterval.end < intervals[0].start:
-            return [newInterval] + intervals
-        
-        
-        if newInterval.start > intervals[-1].end:
-            return intervals + [newInterval]
-            
-        tmp = list(filter(lambda i: intervals[i].end>=newInterval.start, range(len(intervals))))
-        need_merge = list(filter(lambda i: intervals[i].start<=newInterval.end, tmp))
-        
-        if need_merge:
-        
-            min_idx = need_merge[0]
-            max_idx = need_merge[-1]
-            # need_merge = intervals[min_idx, max_idx+1]
-            new_item = Interval(min(intervals[min_idx].start, newInterval.start), max(intervals[max_idx].end, newInterval.end))
-            return intervals[:min_idx] + [new_item] + intervals[max_idx+1:]
-        
-        else:
-            idx = tmp[0]
-            return intervals[:idx] + [newInterval] + intervals[idx:]
+class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        res = []
+        i = 0
+        n = len(intervals)
+        toinsert = [newInterval]
+        j = 0
+        while i < n or j == 0:
+            cur = None
+            if i == n or j == 0 and intervals[i][0] > newInterval[0]:
+                cur = newInterval
+                j = 1
+            else:
+                cur = intervals[i] 
+                i += 1
+            if res and res[-1][1] >= cur[0]:
+                res[-1][1] = max(res[-1][1], cur[1])
+            else:
+                res.append(cur)
+        return res
             
