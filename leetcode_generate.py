@@ -469,8 +469,10 @@ class Leetcode:
 
         qname = '{id}-{title}'.format(id=str(qid).zfill(MAX_DIGIT_LEN), title=qtitle)
         print('begin download ' + qname)
-        path = Path.joinpath(SOLUTION_FOLDER, qname)
-        check_and_make_dir(path)
+        # print('begin download' + '{}'.format())
+        # path = Path.joinpath(SOLUTION_FOLDER, qname)
+        path = SOLUTION_FOLDER
+        # check_and_make_dir(path)
         for slt in slts:
             fname = '{title}.{ext}'.format(
                 title=qtitle, ext=self.prolangdict[slt['lang']].ext

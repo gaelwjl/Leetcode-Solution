@@ -2,8 +2,14 @@
 Update time:  2020-08-31 20:44:37
 
 Auto created by [leetcode_generate](https://github.com/bonfy/leetcode)
+## Dynamic programming 
+| # | Title | Source Code | Explaination | Difficulty |
+|1|[two-sum](https://leetcode.com/problems/two-sum)|[Python3](solutions/two-sum.py)|[:memo:](https://leetcode.com/articles/two-sum/)|Easy|
 
-| # | Title | Source Code | Article | Difficulty |
+## Greedy 
+|1|[two-sum](https://leetcode.com/problems/two-sum)|[Python3](solutions/two-sum.py)|[:memo:](https://leetcode.com/articles/two-sum/)|Easy|
+
+| # | Title | Source Code |  | Difficulty |
 |:---:|:---:|:---:|:---:|:---:|
 |1|[two-sum](https://leetcode.com/problems/two-sum)|[Python3](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/0001-two-sum/two-sum.py)|[:memo:](https://leetcode.com/articles/two-sum/)|Easy|
 |2|[add-two-numbers](https://leetcode.com/problems/add-two-numbers)|[Python3](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/0002-add-two-numbers/add-two-numbers.py) [Python](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/0002-add-two-numbers/add-two-numbers.py)|[:memo:](https://leetcode.com/articles/add-two-numbers/)|Medium|
