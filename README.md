@@ -4,7 +4,8 @@ Update time:  2020-08-31 20:44:37
 Auto created by [leetcode_generate](https://github.com/bonfy/leetcode)
 ## Dynamic programming 
 | # | Title | Source Code | Explaination | Difficulty |
-|1|[two-sum](https://leetcode.com/problems/two-sum)|[Python3](solutions/two-sum.py)|[:memo:](https://leetcode.com/articles/two-sum/)|Easy|
+|:---:|:---:|:---:|:---:|:---:|
+|1|[two-sum](https://leetcode.com/problems/two-sum)|[Python3](solutions/0001-two-sum.py)|[:memo:](https://leetcode.com/articles/two-sum/)|Easy|
 
 ## Greedy 
 |1|[two-sum](https://leetcode.com/problems/two-sum)|[Python3](solutions/two-sum.py)|[:memo:](https://leetcode.com/articles/two-sum/)|Easy|
