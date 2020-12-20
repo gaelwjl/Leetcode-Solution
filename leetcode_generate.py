@@ -541,7 +541,9 @@ Auto created by [leetcode_generate](https://github.com/bonfy/leetcode)
                     article=item.question__article__slug
                 )
             if item.is_lock:
-                language = ':lock:'
+                # language = ':lock:'
+                continue
+            elif not item.solutions:
                 continue
             else:
                 if item.solutions:
@@ -616,6 +618,4 @@ def do_job(leetcode):
 
 if __name__ == '__main__':
     leetcode = Leetcode()
-    while True:
-        do_job(leetcode)
-        time.sleep(24 * 60 * 60)
+    do_job(leetcode)
