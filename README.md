@@ -1,6 +1,6 @@
-# Leetcode Hard Solutions with Cpp,Python3
+# Leetcode 66 Hard Solutions with Cpp,Python3
         
-Update time:  2020-12-20 12:48:15
+Update time:  2020-12-20 14:02:15
 
 | # | Title | Source Code | Article | Difficulty |
 |:---:|:---:|:---:|:---:|:---:|
@@ -14,9 +14,11 @@ Update time:  2020-12-20 12:48:15
 |1766|[minimum-number-of-removals-to-make-mountain-array](https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array)|[Python3](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1766-minimum-number-of-removals-to-make-mountain-array/minimum-number-of-removals-to-make-mountain-array.py)||Hard|
 |1758|[distribute-repeating-integers](https://leetcode.com/problems/distribute-repeating-integers)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1758-distribute-repeating-integers/distribute-repeating-integers.cpp)||Hard|
 |1744|[number-of-ways-to-form-a-target-string-given-a-dictionary](https://leetcode.com/problems/number-of-ways-to-form-a-target-string-given-a-dictionary)|[Python3](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1744-number-of-ways-to-form-a-target-string-given-a-dictionary/number-of-ways-to-form-a-target-string-given-a-dictionary.py)||Hard|
+|1740|[count-subtrees-with-max-distance-between-cities](https://leetcode.com/problems/count-subtrees-with-max-distance-between-cities)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1740-count-subtrees-with-max-distance-between-cities/count-subtrees-with-max-distance-between-cities.cpp)||Hard|
 |1732|[minimum-one-bit-operations-to-make-integers-zero](https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero)|[Python3](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1732-minimum-one-bit-operations-to-make-integers-zero/minimum-one-bit-operations-to-make-integers-zero.py)||Hard|
 |1728|[fancy-sequence](https://leetcode.com/problems/fancy-sequence)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1728-fancy-sequence/fancy-sequence.cpp)||Hard|
 |1710|[find-servers-that-handled-most-number-of-requests](https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1710-find-servers-that-handled-most-number-of-requests/find-servers-that-handled-most-number-of-requests.cpp)||Hard|
+|1692|[number-of-ways-to-reorder-array-to-get-same-bst](https://leetcode.com/problems/number-of-ways-to-reorder-array-to-get-same-bst)|[Python3](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1692-number-of-ways-to-reorder-array-to-get-same-bst/number-of-ways-to-reorder-array-to-get-same-bst.py)||Hard|
 |1680|[count-all-possible-routes](https://leetcode.com/problems/count-all-possible-routes)|[Python3](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1680-count-all-possible-routes/count-all-possible-routes.py)||Hard|
 |1669|[minimum-cost-to-cut-a-stick](https://leetcode.com/problems/minimum-cost-to-cut-a-stick)|[Python3](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1669-minimum-cost-to-cut-a-stick/minimum-cost-to-cut-a-stick.py)||Hard|
 |1403|[palindrome-partitioning-iii](https://leetcode.com/problems/palindrome-partitioning-iii)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1403-palindrome-partitioning-iii/palindrome-partitioning-iii.cpp)||Hard|

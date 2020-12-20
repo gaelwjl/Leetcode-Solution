@@ -509,15 +509,23 @@ class Leetcode:
             pool.submit(self._download_code_by_quiz, quiz)
         pool.shutdown(wait=True)
 
+    def cnt_hard(self):
+        cnt = 0
+        for item in self.items:
+            if item.solutions and item.difficulty == "Hard":
+                cnt += 1
+        return cnt
+
     def write_readme(self):
         """Write Readme to current folder"""
         languages_readme = ','.join([x.capitalize() for x in self.languages])
-        md = '''# Leetcode Hard Solutions with {language}
+        md = '''# Leetcode {cntHard} Hard Solutions with {language}
         
 Update time:  {tm}
 
 | # | Title | Source Code | Article | Difficulty |
 |:---:|:---:|:---:|:---:|:---:|'''.format(
+            cntHard=self.cnt_hard(),
             language=languages_readme,
             tm=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())),
             num_solved=self.num_solved,
@@ -601,8 +609,8 @@ def do_job(leetcode):
     print('Leetcode finish dowload')
     leetcode.write_readme()
     print('Leetcode finish write readme')
-    # leetcode.push_to_github()
-    # print('push to github')
+    leetcode.push_to_github()
+    print('push to github')
 
 
 if __name__ == '__main__':
