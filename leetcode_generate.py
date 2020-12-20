@@ -1,10 +1,3 @@
-# coding:utf-8
-#
-# Author: BONFY<foreverbonfy@163.com>
-# Github: https://github.com/bonfy
-# Repo:   https://github.com/bonfy/leetcode
-# Usage:  Leetcode solution downloader and auto generate readme
-#
 import requests
 import os
 import configparser
@@ -20,7 +13,7 @@ from selenium import webdriver
 from collections import namedtuple, OrderedDict
 
 HOME = Path.cwd()
-MAX_DIGIT_LEN = 4 # 1000+ PROBLEMS
+MAX_DIGIT_LEN = 4  # 1000+ PROBLEMS
 SOLUTION_FOLDER_NAME = 'solutions'
 SOLUTION_FOLDER = Path.joinpath(HOME, SOLUTION_FOLDER_NAME)
 CONFIG_FILE = Path.joinpath(HOME, 'config.cfg')
@@ -35,7 +28,8 @@ HEADERS = {
     'Connection': 'keep-alive',
     'Content-Type': 'application/x-www-form-urlencoded',
     'Host': 'leetcode.com',
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36',  # NOQA
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36',
+    # NOQA
 }
 
 
@@ -166,7 +160,7 @@ class QuizItem:
     @property
     def acceptance(self):
         return '%.1f%%' % (
-            float(self.total_acs) * 100 / float(self.total_submitted)
+                float(self.total_acs) * 100 / float(self.total_submitted)
         )
 
 
@@ -323,11 +317,11 @@ class Leetcode:
         offset = 0
         last_key = ''
         while True:
-            print('try to load submissions from ', offset, ' to ', offset+limit)
+            print('try to load submissions from ', offset, ' to ', offset + limit)
             submissions_url = '{}/api/submissions/?format=json&limit={}&offset={}&last_key={}'.format(
                 self.base_url, limit, offset, last_key
             )
-            
+
             resp = self.session.get(submissions_url, proxies=PROXIES)
             # print(submissions_url, ':', resp.status_code)
             assert resp.status_code == 200
@@ -469,10 +463,8 @@ class Leetcode:
 
         qname = '{id}-{title}'.format(id=str(qid).zfill(MAX_DIGIT_LEN), title=qtitle)
         print('begin download ' + qname)
-        # print('begin download' + '{}'.format())
-        # path = Path.joinpath(SOLUTION_FOLDER, qname)
-        path = SOLUTION_FOLDER
-        # check_and_make_dir(path)
+        path = Path.joinpath(SOLUTION_FOLDER, qname)
+        check_and_make_dir(path)
         for slt in slts:
             fname = '{title}.{ext}'.format(
                 title=qtitle, ext=self.prolangdict[slt['lang']].ext
@@ -519,18 +511,18 @@ class Leetcode:
 
     def write_readme(self):
         """Write Readme to current folder"""
-
         languages_readme = ','.join([x.capitalize() for x in self.languages])
-        md = '''# :pencil2: Leetcode Solutions with {language}
+        md = '''# Leetcode Hard Solutions with {language}
+        
 Update time:  {tm}
-Auto created by [leetcode_generate](https://github.com/bonfy/leetcode)
+
 | # | Title | Source Code | Article | Difficulty |
 |:---:|:---:|:---:|:---:|:---:|'''.format(
             language=languages_readme,
             tm=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())),
-            # num_solved=self.num_solved,
-            # num_total=self.num_total,
-            # num_lock=self.num_lock,
+            num_solved=self.num_solved,
+            num_total=self.num_total,
+            num_lock=self.num_lock,
             repo=CONFIG['repo'],
         )
         md += '\n'
@@ -541,10 +533,7 @@ Auto created by [leetcode_generate](https://github.com/bonfy/leetcode)
                     article=item.question__article__slug
                 )
             if item.is_lock:
-                # language = ':lock:'
-                continue
-            elif not item.solutions:
-                continue
+                language = ':lock:'
             else:
                 if item.solutions:
                     dirname = '{folder}/{id}-{title}'.format(
@@ -571,7 +560,7 @@ Auto created by [leetcode_generate](https://github.com/bonfy/leetcode)
                 else:
                     language = ''
             language = language.strip()
-            if item.difficulty == 'Hard':
+            if item.solutions and item.difficulty == "Hard":
                 md += '|{id}|[{title}]({url})|{language}|{article}|{difficulty}|\n'.format(
                     id=item.question_id,
                     title=item.question__title_slug,
@@ -612,8 +601,8 @@ def do_job(leetcode):
     print('Leetcode finish dowload')
     leetcode.write_readme()
     print('Leetcode finish write readme')
-    leetcode.push_to_github()
-    print('push to github')
+    # leetcode.push_to_github()
+    # print('push to github')
 
 
 if __name__ == '__main__':
