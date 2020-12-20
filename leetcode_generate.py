@@ -519,23 +519,22 @@ class Leetcode:
 
     def write_readme(self):
         """Write Readme to current folder"""
+
         languages_readme = ','.join([x.capitalize() for x in self.languages])
         md = '''# :pencil2: Leetcode Solutions with {language}
 Update time:  {tm}
-
 Auto created by [leetcode_generate](https://github.com/bonfy/leetcode)
-
 | # | Title | Source Code | Article | Difficulty |
 |:---:|:---:|:---:|:---:|:---:|'''.format(
             language=languages_readme,
             tm=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())),
-            num_solved=self.num_solved,
-            num_total=self.num_total,
-            num_lock=self.num_lock,
+            # num_solved=self.num_solved,
+            # num_total=self.num_total,
+            # num_lock=self.num_lock,
             repo=CONFIG['repo'],
         )
         md += '\n'
-        for item in self.items:
+        for item in self.items[::-1]:
             article = ''
             if item.question__article__slug:
                 article = '[:memo:](https://leetcode.com/articles/{article}/)'.format(
@@ -543,6 +542,7 @@ Auto created by [leetcode_generate](https://github.com/bonfy/leetcode)
                 )
             if item.is_lock:
                 language = ':lock:'
+                continue
             else:
                 if item.solutions:
                     dirname = '{folder}/{id}-{title}'.format(
@@ -569,14 +569,15 @@ Auto created by [leetcode_generate](https://github.com/bonfy/leetcode)
                 else:
                     language = ''
             language = language.strip()
-            md += '|{id}|[{title}]({url})|{language}|{article}|{difficulty}|\n'.format(
-                id=item.question_id,
-                title=item.question__title_slug,
-                url=item.url,
-                language=language,
-                article=article,
-                difficulty=item.difficulty,
-            )
+            if item.difficulty == 'Hard':
+                md += '|{id}|[{title}]({url})|{language}|{article}|{difficulty}|\n'.format(
+                    id=item.question_id,
+                    title=item.question__title_slug,
+                    url=item.url,
+                    language=language,
+                    article=article,
+                    difficulty=item.difficulty,
+                )
         with open('README.md', 'w') as f:
             f.write(md)
 
