@@ -1,9 +1,10 @@
-# Leetcode 75 Hard Solutions with Cpp,Python3
+# Leetcode 76 Hard Solutions with Cpp,Python3
         
-Update time:  2020-12-26 19:12:52
+Update time:  2020-12-27 12:44:19
 
 | # | Title | Source Code | Article | Difficulty |
 |:---:|:---:|:---:|:---:|:---:|
+|1826|[maximum-xor-with-an-element-from-array](https://leetcode.com/problems/maximum-xor-with-an-element-from-array)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1826-maximum-xor-with-an-element-from-array/maximum-xor-with-an-element-from-array.cpp)||Hard|
 |1815|[checking-existence-of-edge-length-limited-paths](https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1815-checking-existence-of-edge-length-limited-paths/checking-existence-of-edge-length-limited-paths.cpp)||Hard|
 |1805|[minimum-adjacent-swaps-for-k-consecutive-ones](https://leetcode.com/problems/minimum-adjacent-swaps-for-k-consecutive-ones)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1805-minimum-adjacent-swaps-for-k-consecutive-ones/minimum-adjacent-swaps-for-k-consecutive-ones.cpp)||Hard|
 |1799|[minimum-incompatibility](https://leetcode.com/problems/minimum-incompatibility)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1799-minimum-incompatibility/minimum-incompatibility.cpp)||Hard|
