@@ -1,10 +1,12 @@
-# Leetcode 76 Hard Solutions with Cpp,Python3
+# Leetcode 81 Hard Solutions with Cpp,Python3
         
-Update time:  2020-12-27 12:44:19
+Update time:  2021-01-14 13:44:24
 
 | # | Title | Source Code | Article | Difficulty |
 |:---:|:---:|:---:|:---:|:---:|
+|1832|[minimum-operations-to-make-a-subsequence](https://leetcode.com/problems/minimum-operations-to-make-a-subsequence)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1832-minimum-operations-to-make-a-subsequence/minimum-operations-to-make-a-subsequence.cpp)||Hard|
 |1826|[maximum-xor-with-an-element-from-array](https://leetcode.com/problems/maximum-xor-with-an-element-from-array)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1826-maximum-xor-with-an-element-from-array/maximum-xor-with-an-element-from-array.cpp)||Hard|
+|1825|[find-minimum-time-to-finish-all-jobs](https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1825-find-minimum-time-to-finish-all-jobs/find-minimum-time-to-finish-all-jobs.cpp)||Hard|
 |1815|[checking-existence-of-edge-length-limited-paths](https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1815-checking-existence-of-edge-length-limited-paths/checking-existence-of-edge-length-limited-paths.cpp)||Hard|
 |1805|[minimum-adjacent-swaps-for-k-consecutive-ones](https://leetcode.com/problems/minimum-adjacent-swaps-for-k-consecutive-ones)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1805-minimum-adjacent-swaps-for-k-consecutive-ones/minimum-adjacent-swaps-for-k-consecutive-ones.cpp)||Hard|
 |1799|[minimum-incompatibility](https://leetcode.com/problems/minimum-incompatibility)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1799-minimum-incompatibility/minimum-incompatibility.cpp)||Hard|
@@ -28,8 +30,11 @@ Update time:  2020-12-27 12:44:19
 |1669|[minimum-cost-to-cut-a-stick](https://leetcode.com/problems/minimum-cost-to-cut-a-stick)|[Python3](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1669-minimum-cost-to-cut-a-stick/minimum-cost-to-cut-a-stick.py)||Hard|
 |1663|[detect-cycles-in-2d-grid](https://leetcode.com/problems/detect-cycles-in-2d-grid)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1663-detect-cycles-in-2d-grid/detect-cycles-in-2d-grid.cpp)||Hard|
 |1659|[get-the-maximum-score](https://leetcode.com/problems/get-the-maximum-score)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1659-get-the-maximum-score/get-the-maximum-score.cpp)||Hard|
+|1638|[best-position-for-a-service-centre](https://leetcode.com/problems/best-position-for-a-service-centre)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1638-best-position-for-a-service-centre/best-position-for-a-service-centre.cpp) [Python3](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1638-best-position-for-a-service-centre/best-position-for-a-service-centre.py)||Hard|
+|1633|[minimum-number-of-increments-on-subarrays-to-form-a-target-array](https://leetcode.com/problems/minimum-number-of-increments-on-subarrays-to-form-a-target-array)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1633-minimum-number-of-increments-on-subarrays-to-form-a-target-array/minimum-number-of-increments-on-subarrays-to-form-a-target-array.cpp)||Hard|
 |1587|[parallel-courses-ii](https://leetcode.com/problems/parallel-courses-ii)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1587-parallel-courses-ii/parallel-courses-ii.cpp)||Hard|
 |1569|[max-dot-product-of-two-subsequences](https://leetcode.com/problems/max-dot-product-of-two-subsequences)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1569-max-dot-product-of-two-subsequences/max-dot-product-of-two-subsequences.cpp)||Hard|
+|1559|[cherry-pickup-ii](https://leetcode.com/problems/cherry-pickup-ii)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1559-cherry-pickup-ii/cherry-pickup-ii.cpp)|[:memo:](https://leetcode.com/articles/cherry-pickup-ii/)|Hard|
 |1403|[palindrome-partitioning-iii](https://leetcode.com/problems/palindrome-partitioning-iii)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1403-palindrome-partitioning-iii/palindrome-partitioning-iii.cpp)||Hard|
 |1367|[maximum-height-by-stacking-cuboids](https://leetcode.com/problems/maximum-height-by-stacking-cuboids)|[Cpp](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1367-maximum-height-by-stacking-cuboids/maximum-height-by-stacking-cuboids.cpp)||Hard|
 |1296|[kth-ancestor-of-a-tree-node](https://leetcode.com/problems/kth-ancestor-of-a-tree-node)|[Python3](https://github.com/wenjun20/Leetcode-Solution/blob/master/solutions/1296-kth-ancestor-of-a-tree-node/kth-ancestor-of-a-tree-node.py)||Hard|

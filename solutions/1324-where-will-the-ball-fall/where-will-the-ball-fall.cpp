@@ -35,6 +35,13 @@
 // Explanation: The ball gets stuck against the left wall.
 //
 //
+// Example 3:
+//
+//
+// Input: grid = [[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1],[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1]]
+// Output: [0,1,2,3,4,-1]
+//
+//
 //  
 // Constraints:
 //
